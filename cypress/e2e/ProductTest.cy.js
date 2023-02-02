@@ -8,6 +8,7 @@ describe("Search for test products", () => {
 
     cy.get('[data-testid="search-bar"]').type("batom");
 
+    cy.wait(6000);
     cy.get('[data-testid="product-values"]').then((elements) => {
       should(elements).to.be.majorThan(1);
     });
