@@ -9,17 +9,17 @@ describe("Search for test products", () => {
     cy.get('[data-testid="search-bar"]').type("batom");
 
     cy.wait(6000);
-    cy.get('[data-testid="product-values"]').then((elements) => {
-      should(elements).to.be.majorThan(1);
+    cy.get('[name="product-card"]').then((elements) => {
+      expect(elements).to.be.greaterThan(1);
     });
-    cy.get('[data-testid="product-values"]').eq(0).should("exist");
+    cy.get('[name="product-card"]').eq(0).should("exist");
 
     cy.click(cy.contains("Entre para comprar"));
 
     cy.url().should("contain", "login");
   });
 
-  it.only("Search for batom, click in the first produt and check if description is greater than 0", () => {
+  it("Search for batom, click in the first produt and check if description is greater than 0", () => {
     cy.visit("https://loja.inventa.shop/");
     let page = new HomePage();
     page.getSearchBarInput().type("batom");
